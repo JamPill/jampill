@@ -1,7 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "main": ".open-next/worker.js",
-  "name": "monorepo",
+  "name": "jampill",
   "compatibility_date": "2025-08-15",
   "compatibility_flags": [
     // Enable Node.js API
@@ -19,7 +19,7 @@
     {
       "binding": "D1",
       "database_id": "e42dced0-4597-41a3-8588-1c311884b619",
-      "database_name": "monorepo",
+      "database_name": "jampill",
       "remote": true,
     },
   ],
@@ -33,8 +33,8 @@
   "r2_buckets": [
     {
       "binding": "R2",
-      "bucket_name": "monorepo",
-      "preview_bucket_name": "monorepo",
+      "bucket_name": "jampill",
+      "preview_bucket_name": "jampill",
     },
     // Create a R2 binding with the binding name "NEXT_INC_CACHE_R2_BUCKET"
     // {
