@@ -38,12 +38,6 @@ export const Pages: CollectionConfig = {
       },
     },
     {
-      name: 'layout',
-      type: 'blocks',
-      blocks: [Hero, Content],
-      required: true,
-    },
-    {
       name: 'slug',
       type: 'text',
       unique: true,
@@ -70,6 +64,12 @@ export const Pages: CollectionConfig = {
         position: 'sidebar',
         description: 'Appunti editoriali interni.',
       },
+    },
+    {
+      name: 'blocks',
+      type: 'blocks',
+      blocks: [Hero, Content],
+      required: true,
     },
   ],
 }

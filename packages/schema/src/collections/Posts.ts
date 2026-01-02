@@ -1,4 +1,6 @@
 import type { CollectionConfig } from 'payload'
+import { Hero } from '../blocks/Hero'
+import { Content } from '../blocks/Content'
 
 export const Posts: CollectionConfig = {
   slug: 'posts',
@@ -95,8 +97,9 @@ export const Posts: CollectionConfig = {
       },
     },
     {
-      name: 'content',
-      type: 'richText',
+      name: 'blocks',
+      type: 'blocks',
+      blocks: [Hero, Content],
       required: true,
     },
   ],
