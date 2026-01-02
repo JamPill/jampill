@@ -56,3 +56,4 @@ node_modules/
 # Monorepo & Turbo
 apps/**/.next/
 .turbo
+apps/**/.ideas
