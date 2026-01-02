@@ -183,7 +183,15 @@ export interface PostCategory {
 export interface Post {
   id: number;
   title: string;
+  /**
+   * Breve riassunto mostrato nelle liste e nelle anteprime.
+   */
+  excerpt?: string | null;
   slug?: string | null;
+  /**
+   * Appunti editoriali non visibili sul sito.
+   */
+  notes?: string | null;
   authors: (number | User)[];
   publishedAt?: string | null;
   featuredImage?: (number | null) | Media;
@@ -351,7 +359,9 @@ export interface PostCategoriesSelect<T extends boolean = true> {
  */
 export interface PostsSelect<T extends boolean = true> {
   title?: T;
+  excerpt?: T;
   slug?: T;
+  notes?: T;
   authors?: T;
   publishedAt?: T;
   featuredImage?: T;

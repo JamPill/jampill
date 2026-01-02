@@ -29,6 +29,13 @@ export const Posts: CollectionConfig = {
       required: true,
     },
     {
+      name: 'excerpt',
+      type: 'textarea',
+      admin: {
+        description: 'Breve riassunto mostrato nelle liste e nelle anteprime.',
+      },
+    },
+    {
       name: 'slug',
       type: 'text',
       unique: true,
@@ -46,6 +53,14 @@ export const Posts: CollectionConfig = {
               .replace(/[^\w-]+/g, '')
           },
         ],
+      },
+    },
+    {
+      name: 'notes',
+      type: 'textarea',
+      admin: {
+        position: 'sidebar',
+        description: 'Appunti editoriali non visibili sul sito.',
       },
     },
     {

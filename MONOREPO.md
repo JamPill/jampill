@@ -98,11 +98,11 @@ We use a centralized approach to handle SEO and search engine indexing across al
 ### 1. Centralized SEO Logic (@repo/schema)
 Instead of configuring the SEO plugin in each app, we use a "factory" in `packages/schema/src/plugins/seo.ts`.
 - **Usage**: Import `createSeoPlugin` in your `payload.config.ts`.
-- **Benefit**: Standardizes how titles, descriptions, and OG images are generated for the entire platform.
+- **Convention**: Collections using this plugin should include an `excerpt` (textarea) field. The plugin is configured to automatically use `excerpt` as a fallback for the Meta Description if the SEO tab is left empty.
 
 ### 2. Standardized Metadata (@repo/ui)
 - **`generateMeta`**: A shared utility to map Payload SEO fields to Next.js `Metadata` objects.
-- **`seoDefaults`**: Standard profiles for blocking or allowing crawlers.
+- **`seoDefaults`**: Standard profiles (`NO_INDEX_METADATA`, `BLOCK_ALL_ROBOTS`, `ALLOW_ALL_ROBOTS`) for blocking or allowing crawlers.
 
 ### 3. Blocking/Unblocking Apps (Privacy)
 By default, every new app should start as "private" (no indexing).
@@ -113,4 +113,16 @@ By default, every new app should start as "private" (no indexing).
   - In `layout.tsx`: Remove `NO_INDEX_METADATA` and use `generateMeta` for dynamic pages.
   - In `robots.ts`: Return `ALLOW_ALL_ROBOTS`.
 
-This architecture ensures **Global Coherence** (how we handle SEO) and **Local Control** (if a specific site should be indexed).
+## Shared Schema Conventions
+To maintain a professional and consistent Admin UI across all apps, follow these patterns in `packages/schema`:
+
+### 1. Internal-Only Fields
+Fields intended for internal use (like author notes, draft reminders, or audit logs) should:
+- Use `name: 'notes'` or similar.
+- Be placed in the sidebar: `admin: { position: 'sidebar' }`.
+- **Security**: Remember that Payload's Access Control should be configured to prevent these fields from being exposed via the public API if they contain sensitive info.
+
+### 2. Slugs and Titles
+- Always use `useAsTitle: 'title'` in the collection config.
+- Implement auto-generated slugs using a `beforeValidate` hook based on the `title` field.
+- Place the `slug` field in the sidebar to keep the main content area focused on the text.
