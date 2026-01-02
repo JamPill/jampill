@@ -91,3 +91,26 @@ Payload with D1 adapter requires manual migration management.
 ## Troubleshooting & Tips
 - **ESM Modules**: All shared packages in `packages/` should be configured as ESM (`"type": "module"`) to be correctly resolved by Payload CLI tools.
 - **OpenNext**: Requires `output: 'standalone'` in `next.config.ts`.
+
+## SEO & Privacy Management
+We use a centralized approach to handle SEO and search engine indexing across all apps.
+
+### 1. Centralized SEO Logic (@repo/schema)
+Instead of configuring the SEO plugin in each app, we use a "factory" in `packages/schema/src/plugins/seo.ts`.
+- **Usage**: Import `createSeoPlugin` in your `payload.config.ts`.
+- **Benefit**: Standardizes how titles, descriptions, and OG images are generated for the entire platform.
+
+### 2. Standardized Metadata (@repo/ui)
+- **`generateMeta`**: A shared utility to map Payload SEO fields to Next.js `Metadata` objects.
+- **`seoDefaults`**: Standard profiles for blocking or allowing crawlers.
+
+### 3. Blocking/Unblocking Apps (Privacy)
+By default, every new app should start as "private" (no indexing).
+- **To Block (Development/Staging)**:
+  - In `layout.tsx`: Spread `...NO_INDEX_METADATA` into the `metadata` object.
+  - In `robots.ts`: Return `BLOCK_ALL_ROBOTS`.
+- **To Unblock (Production)**:
+  - In `layout.tsx`: Remove `NO_INDEX_METADATA` and use `generateMeta` for dynamic pages.
+  - In `robots.ts`: Return `ALLOW_ALL_ROBOTS`.
+
+This architecture ensures **Global Coherence** (how we handle SEO) and **Local Control** (if a specific site should be indexed).
