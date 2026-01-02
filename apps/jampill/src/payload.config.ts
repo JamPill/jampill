@@ -17,6 +17,7 @@ import {
   Pages,
   locales,
   defaultLocale,
+  createEmailAdapter,
 } from '@repo/schema'
 
 const filename = fileURLToPath(import.meta.url)
@@ -53,6 +54,10 @@ export default buildConfig({
     defaultLocale,
     fallback: true,
   },
+  email: createEmailAdapter({
+    defaultFromAddress: process.env.RESEND_DEFAULT_FROM || 'noreply@example.com',
+    defaultFromName: process.env.RESEND_DEFAULT_NAME || 'JamPill',
+  }),
   db: sqliteD1Adapter({ binding: cloudflare.env.D1 }),
   plugins: [
     r2Storage({
