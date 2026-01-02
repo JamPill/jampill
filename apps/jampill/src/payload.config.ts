@@ -7,7 +7,7 @@ import { CloudflareContext, getCloudflareContext } from '@opennextjs/cloudflare'
 import { GetPlatformProxyOptions } from 'wrangler'
 import { r2Storage } from '@payloadcms/storage-r2'
 
-import { Users, Media, Posts, PostCategories, Header, createSeoPlugin } from '@repo/schema'
+import { Users, Media, Posts, PostCategories, Header, createSeoPlugin, Pages } from '@repo/schema'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -31,7 +31,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, PostCategories, Posts],
+  collections: [Users, Media, PostCategories, Posts, Pages],
   globals: [Header],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
@@ -47,7 +47,7 @@ export default buildConfig({
     createSeoPlugin({
       siteName: 'JamPill',
       baseUrl: process.env.NEXT_PUBLIC_URL || 'https://jampill.com',
-      collections: ['posts'],
+      collections: ['pages', 'posts'],
     }),
   ],
 })

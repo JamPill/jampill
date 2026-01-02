@@ -1,5 +1,6 @@
 export * from './src/collections/Users'
 export * from './src/collections/Media'
+export * from './src/collections/Pages'
 export * from './src/collections/Posts'
 export * from './src/collections/PostCategories'
 export * from './src/globals/Header'
