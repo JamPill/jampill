@@ -638,8 +638,8 @@ export interface Setting {
     tertiary?: string | null;
   };
   typography?: {
-    fontTitle?: ('Inter' | 'Outfit' | 'Roboto') | null;
-    fontBody?: ('Inter' | 'Outfit' | 'Roboto') | null;
+    fontTitle?: ('Inter' | 'Outfit' | 'Gantari' | 'PlusJakartaSans' | 'Montserrat' | 'Roboto') | null;
+    fontBody?: ('Inter' | 'Outfit' | 'Gantari' | 'PlusJakartaSans' | 'Montserrat' | 'Roboto') | null;
   };
   accessibility?: {
     underlineLinks?: boolean | null;

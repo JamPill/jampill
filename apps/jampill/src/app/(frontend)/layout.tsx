@@ -1,6 +1,6 @@
 import { getPayload } from 'payload'
 import config from '@payload-config'
-import { Inter, Outfit, Roboto } from 'next/font/google'
+import { Inter, Outfit, Roboto, Gantari, Plus_Jakarta_Sans, Montserrat } from 'next/font/google'
 import { Header } from '@/components/Header'
 import { Maintenance } from '@/components/Maintenance'
 import { NO_INDEX_METADATA } from '@repo/ui'
@@ -16,17 +16,26 @@ const outfit = Outfit({
   variable: '--font-outfit',
 })
 
+const gantari = Gantari({
+  subsets: ['latin'],
+  variable: '--font-gantari',
+})
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-plusjakartasans',
+})
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+})
+
 const roboto = Roboto({
   weight: ['400', '700'],
   subsets: ['latin'],
   variable: '--font-roboto',
 })
-
-const fontMap = {
-  Inter: inter,
-  Outfit: outfit,
-  Roboto: roboto,
-}
 
 export const dynamic = 'force-dynamic'
 
@@ -65,7 +74,10 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
   if (settings.siteState !== 'online') {
     return (
-      <html lang="it" className={`${inter.variable} ${outfit.variable} ${roboto.variable}`}>
+      <html
+        lang="it"
+        className={`${inter.variable} ${outfit.variable} ${roboto.variable} ${gantari.variable} ${jakarta.variable} ${montserrat.variable}`}
+      >
         <head>
           <style dangerouslySetInnerHTML={{ __html: brandStyles }} />
         </head>
@@ -77,7 +89,10 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   }
 
   return (
-    <html lang="it" className={`${inter.variable} ${outfit.variable} ${roboto.variable}`}>
+    <html
+      lang="it"
+      className={`${inter.variable} ${outfit.variable} ${roboto.variable} ${gantari.variable} ${jakarta.variable} ${montserrat.variable}`}
+    >
       <head>
         <style dangerouslySetInnerHTML={{ __html: brandStyles }} />
       </head>

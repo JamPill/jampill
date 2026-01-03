@@ -164,6 +164,9 @@ export const Settings: GlobalConfig = {
                       options: [
                         { label: 'Inter (Moderno)', value: 'Inter' },
                         { label: 'Outfit (Geometrico)', value: 'Outfit' },
+                        { label: 'Gantari (Elegante)', value: 'Gantari' },
+                        { label: 'Plus Jakarta Sans', value: 'PlusJakartaSans' },
+                        { label: 'Montserrat', value: 'Montserrat' },
                         { label: 'Roboto (Standard)', value: 'Roboto' },
                       ],
                       admin: { width: '50%' },
@@ -175,6 +178,9 @@ export const Settings: GlobalConfig = {
                       options: [
                         { label: 'Inter', value: 'Inter' },
                         { label: 'Outfit', value: 'Outfit' },
+                        { label: 'Gantari', value: 'Gantari' },
+                        { label: 'Plus Jakarta Sans', value: 'PlusJakartaSans' },
+                        { label: 'Montserrat', value: 'Montserrat' },
                         { label: 'Roboto', value: 'Roboto' },
                       ],
                       admin: { width: '50%' },
